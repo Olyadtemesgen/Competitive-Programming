@@ -4,10 +4,5 @@ class Solution:
         new = []
         for x in nums:
             new.append(str(x))
-        def compare(n1, n2):
-            if n1 + n2 > n2 + n1:
-                return -1 
-            else:
-                return 1
-        numss = sorted(new, key=functools.cmp_to_key(compare))
+        numss = sorted(new, key=functools.cmp_to_key(lambda a, b:-1 if a + b > b + a else 1 ))
         return str(int("".join(numss)))
