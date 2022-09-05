@@ -20,6 +20,7 @@ class Solution:
     #the more efficient one is and has the time complexity of O(n)
     def findOriginalArray2(self, changed):
         counter = Counter(changed)
+        changed.sort()
         result = []
         for num in changed:
             if num == 0 and counter[num] >= 2:
