@@ -17,7 +17,19 @@ class Solution:
             return new
         else:
             return []
-     #the more efficient one is
-     def findOriginalArray2(self, changed):
+    #the more efficient one is and has the time complexity of O(n)
+    def findOriginalArray2(self, changed):
+        counter = Counter(changed)
+        result = []
+        for num in changed:
+            if num == 0 and counter[num] >= 2:
+                counter[num] -= 2
+                result.append(num)
+            elif  counter[num] and counter[num * 2]:
+                counter[num] -= 1
+                counter[num * 2] -= 1
+                result.append(num)
+        return result if len(result) == len(num) // 2
+            
      
      
