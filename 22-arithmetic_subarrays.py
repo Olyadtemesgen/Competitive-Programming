@@ -11,10 +11,8 @@ class Solution:
             n = []
             num = others[1] - others[0]
             for y in range(1, len(others) - 1):
-                if num == others[y + 1] - others[y]:
-                    n.append(1)
-            if len(n) == len(others) - 2:
-                answer.append(True)
-            else:
-                answer.append(False)
+                if num != others[y + 1] - others[y]:
+                    n.append(False)
+            n.append(True)
+            answer.append(n)
         return answer
