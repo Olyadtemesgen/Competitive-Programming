@@ -14,3 +14,20 @@ class Solution:
                 elif x == '/' and new[len(new) - 1] != 0 :
                     new[len(new) - 2:] = [int(( new[len(new) - 2]) / new[len(new) - 1])]
         return new[len(new) - 1]
+#It will become much simpler when we use stack
+    def evalRPN(self, tokens):
+        stack = []
+        for x in tokens:
+            if x == '+':
+                stack.append(stack.pop() + stack.pop())
+            elif x == '-':
+                a, b = stack.pop(), stack.pop()
+                stack.append(b - a)
+            elif x == '*':
+                stack.append(stack.pop() * stack.pop())
+            elif x == '/':
+                a, b = stack.pop(), stack.pop()
+                stack.append(int(b / a))
+            else:
+                stack.append(int(x))
+        return int(stack[0])
