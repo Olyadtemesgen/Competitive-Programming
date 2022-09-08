@@ -15,9 +15,18 @@ class Solution:
                 return False
             elif ss[x] in b and a.index(stack[len(stack) - 1]) == b.index(ss[x]):
                 stack.pop()
-            
-
-        if len(stack) == 0:
-            return True 
-        else:
-            return False
+        return True if not stack else False
+ #there is a simplest logic to solve this problem
+    def isValid2(self, s):
+        b = {'}':'{',']':'[',')':'('}
+        ss = list(s)
+        stack = []
+        for x in s:
+            if x in b:
+                if stack and stack[-1] == b[x]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(x)
+        return True if not stack else False
