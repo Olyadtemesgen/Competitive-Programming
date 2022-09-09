@@ -26,3 +26,21 @@ class Solution:
             if x not in '()' and x != '0':
                 res += x
         return res
+#this algorithm almost resembles mine but I think this is more efficient
+    def reverseParentheses2(self, s):
+        stack = []
+        deque = []
+        for char in s:
+            if char != ')':
+                stack.append(char)
+            else:
+                while stack:
+                    popped = stack.pop()
+                    if popped != '(':
+                        deque.append(popped)
+                    else:
+                        break
+                while deque:
+                    stack.append(deque.pop(0))
+        return "".join(stack)
+        return res
