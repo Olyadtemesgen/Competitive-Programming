@@ -24,3 +24,4 @@ class Solution:
             if current in nums1:
                 stack.append(current)
         return result
+#end of the program
