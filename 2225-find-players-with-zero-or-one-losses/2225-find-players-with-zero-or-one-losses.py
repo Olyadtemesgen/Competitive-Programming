@@ -4,6 +4,8 @@ class Solution:
         #this code consists of losers
         losers = []
         winners = set()
+        
+        #I made winners set because duplication is forbidden and it helps me to do some set stuffs
         for match in matches:
             losers.append(match[1])
             winners.add(match[0])
