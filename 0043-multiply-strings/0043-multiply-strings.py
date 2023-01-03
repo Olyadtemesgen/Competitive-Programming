@@ -24,4 +24,4 @@ class Solution:
         #They are now integers
         product = int_form_of_num1 * int_form_of_num2)
         
-        return product
+        return str(product)
