@@ -4,6 +4,7 @@ class Solution:
         answer = 0
         
         for row in grid:
+            
             for index in range(len(grid)):
                
                 flag = True
