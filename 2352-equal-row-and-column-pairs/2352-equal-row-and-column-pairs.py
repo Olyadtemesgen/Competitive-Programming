@@ -3,18 +3,19 @@ class Solution:
         
         answer = 0
         
-        for row in grid:
+        columns = []
+        for index, row in enumerate(grid):
             
-            for index in range(len(grid)):
-               
-                flag = True
-                for col in range(len(row)):
-                    
-                    if row[col] != grid[col][index]:
-                        flag = False
-                
-                if flag:
-                    answer += 1
-
+            column = []
+            for col in range(len(row)):
+                column.append(grid[col][index])
+            
+            columns.append(column)
         
+        for column in columns:
+            
+            for row in grid:
+                if column == row:
+                    answer += 1
+                    
         return answer
