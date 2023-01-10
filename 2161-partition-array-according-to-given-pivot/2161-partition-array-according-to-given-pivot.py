@@ -6,6 +6,7 @@ class Solution:
         index3 = []
         
         for num in nums:
+            
             if num < pivot:
                 index1.append(num)
             
