@@ -14,31 +14,34 @@ class Solution:
         row_finder_l = 0
         counter = 0
         while row_finder_r > row_finder_l and column_finder_r >= column_finder_l:
-            print(column_finder_r)
             first = False
             second = False
             third = False
             fourth = False
             
             while len(result) < length and column < column_finder_r:
-            
+                
                 result.append(matrix[row][column])
                 column += 1
                 first = True
             if first:
+                
                 column -= 1
                 row += 1
             
             while len(result) < length and row < row_finder_r:
+                
                 result.append(matrix[row][column])
                 row += 1
                 second = True
             
             if second:
+                
                 column -= 1
                 row -= 1
             
             while len(result) < length and column >= column_finder_l:
+                
                 result.append(matrix[row][column])
                 column -= 1
                 third = True
@@ -49,6 +52,7 @@ class Solution:
                 row -= 1
             
             while len(result) < length and row > row_finder_l:
+            
                 result.append(matrix[row][column])
                 row -= 1
                 fourth = True
@@ -63,6 +67,7 @@ class Solution:
             row_finder_r -= 1
             column_finder_r -= 1
             counter += 1
+            
             if not (first and second and third and fourth):
                 break
         return result
