@@ -8,7 +8,9 @@ class Solution(object):
             
             if sum(grids[x][b:b + 3]) != flag:
                 return False
+        
         counter = defaultdict(int)
+        
         for x in range(b, b + 3):
             
             summ = 0
