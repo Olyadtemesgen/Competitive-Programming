@@ -1,19 +1,22 @@
 class Solution:
     def findTheWinner(self, n: int, k: int) -> int:
         
-        the_numbers = list(range(n, 0, -1))
+        listt = list(range(1, n + 1))
         
-        length = k - 1
+        #By using circularly moving around the 
+        deleted = k - 1
+        index = 0
         
-        while len(the_numbers) - 1:
-            
-            while length:
+        while len(listt) - 1:
                 
-                the_numbers.insert(0, the_numbers.pop())
+            while deleted:
                 
-                length -= 1
+                index += 1
+                deleted -= 1
             
-            length = k - 1
+            deleted = k - 1
+            index %= len(listt)
             
-            the_numbers.pop()
-        return the_numbers[0]
+            listt.pop(index)
+    
+        return listt[0]
