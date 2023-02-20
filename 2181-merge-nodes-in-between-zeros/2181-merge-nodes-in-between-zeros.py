@@ -5,7 +5,7 @@
 #         self.next = next
 
 class Solution:
-    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+    def mergeNodes1(self, head: Optional[ListNode]) -> Optional[ListNode]:
         
         # Create a dummy node to act as the head of the new linked list
         dummy = ListNode(0)
@@ -40,5 +40,30 @@ class Solution:
         
         # Return the head of the new linked list
         return returned.next
-
     
+    #and Here is the best algorithm I found online
+    def mergeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        
+        pointer1 = head
+        pointer2 = head.next
+        
+        sums = 0
+        
+        while pointer2:
+            
+            # sums = 0
+            
+            if not pointer2.val:
+                
+                pointer1 = pointer1.next
+                pointer1.val = sums
+                sums = 0
+            
+            else:
+                sums += pointer2.val
+            
+            pointer2 = pointer2.next
+            
+        pointer1.next = None
+        
+        return head.next
