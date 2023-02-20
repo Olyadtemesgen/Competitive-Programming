@@ -5,7 +5,7 @@
 #         self.next = None
 
 class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
+    def hasCycle1(self, head: Optional[ListNode]) -> bool:
         sets = set()
 
         current = head
@@ -16,7 +16,7 @@ class Solution:
             current = current.next
         
         return False
-    def hasCycle1(self, head: Optional[ListNode]) -> bool:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
         slow = head
         if head:
             fast = head.next
