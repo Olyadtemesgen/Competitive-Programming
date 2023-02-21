@@ -13,6 +13,7 @@ class Solution:
         saved = 0
         dummy = ListNode()
         heads = dummy
+        
         while current1 and current2:
             
             summ = (current1.val + current2.val + saved) % 10
