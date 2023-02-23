@@ -9,6 +9,7 @@ class Solution:
         
         lll = left
         for right in range(len(nums)):
+            
             summ += (nums[right] % 2)
             
             if summ == k:
@@ -24,25 +25,3 @@ class Solution:
                 
         return result
         ###############################
-        left = count = nice_count = odd_count = 0
-        
-        for j in range(len(nums)):
-            
-            if nums[j] % 2:
-                
-                odd_count += 1
-                
-                if odd_count == k:
-                    count = 0
-                    
-                    while odd_count == k:
-                        
-                        if nums[left] % 2:
-                            odd_count -= 1
-                        
-                        left += 1
-                        count += 1
-            
-            nice_count += count
-
-        return nice_count
