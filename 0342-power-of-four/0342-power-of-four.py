@@ -10,32 +10,25 @@ class Solution:
 #         else:
 #             return self.isPowerOfFour(n / 4)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+#     def isPowerOfFour1(self, n: int) -> bool:
+        
+#         if n == 1:
+#             return True
+#         elif n <= 0:
+#             return False
+        
+#         while not n % 4 and n != 4:
+#             n /= 4
+        
+#         return not n % 4
     
     def isPowerOfFour(self, n: int) -> bool:
         
-        if n == 1:
-            return True
-        elif n <= 0:
+        starting = 1
+        if n <= 0:
             return False
         
-        while not n % 4 and n != 4:
-            n /= 4
+        while starting < n:
+            starting *= 4
         
-        return not n % 4
-    
-    
+        return starting == n
