@@ -7,5 +7,5 @@ class Solution:
             return memory[n]
         
         else:
-            memory[n + 1] = memory.get(n - 1, 0) + memory.get(n , 0)
+            memory[n] = memory.get(n - 1, 0) + memory.get(n - 2 , 0)
             return self.fib(n - 1) + self.fib(n - 2)
