@@ -2,8 +2,6 @@ class MyStack:
     from collections import deque
     def __init__(self):
         self.queue = deque([])
-        self.queue2 = deque([])
-        
 
     def push(self, x: int) -> None:
         self.queue.append(x)
