@@ -6,17 +6,24 @@ class Solution:
         
         for rectangle in queries:
             
-            for row in range(rectangle[0] , rectangle[2] + 1):
-                
-                matrix[row][rectangle[1]] += 1
-                
-                if rectangle[3] + 1 < n:
-                    matrix[row][rectangle[3] + 1] -= 1
+            matrix[rectangle[0]][rectangle[1]] += 1
+            
+            if rectangle[3] < n - 1:
+                matrix[rectangle[0]][rectangle[3] + 1] -= 1
+            
+            if rectangle[2] < n - 1:
+                matrix[rectangle[2] + 1][rectangle[1]] -= 1
+            
+            if rectangle[2] < n - 1 and rectangle[3] < n - 1:
+                matrix[rectangle[2] + 1][rectangle[3] + 1] += 1
             
         for row in range(n):
-            
             for col in range(1, n):
-                
                 matrix[row][col] += matrix[row][col - 1]
+            
+        for col in range( n):
+            for row in range(1, n):
+                matrix[row][col] += matrix[row - 1][col]
         
         return matrix
+                
