@@ -11,9 +11,8 @@ class Solution:
             
             if result < 0:
                 
-                while left < right:
-                    result -= nums[left]
-                    left += 1
+                result = 0
+                left = right
                     
             
             result += nums[right]
