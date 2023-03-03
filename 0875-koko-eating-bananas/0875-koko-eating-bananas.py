@@ -14,6 +14,7 @@ class Solution:
                 total_hours_required += max(1, math.ceil(pile / mid))
             
             return total_hours_required <= h
+        
         left = 1
         
         right = max(piles)
