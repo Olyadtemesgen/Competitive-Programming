@@ -5,16 +5,6 @@ class Solution:
     def minEatingSpeed(self, piles: List[int], h: int) -> int:
 
         
-        def isPossibleToFinishInTime(mid):
-            
-            total_hours_required = 0
-            
-            for pile in piles:
-                
-                total_hours_required += max(1, math.ceil(pile / mid))
-            
-            return total_hours_required <= h
-        
         left = 1
         
         right = max(piles)
@@ -25,7 +15,13 @@ class Solution:
 
             mid = left +  (right - left) // 2
             
-            if isPossibleToFinishInTime(mid):
+            total_hours_required = 0
+            
+            for pile in piles:
+                
+                total_hours_required += max(1, math.ceil(pile / mid))
+            
+            if total_hours_required <= h:
                 
                 result = min(result, mid)
                 right = mid - 1
