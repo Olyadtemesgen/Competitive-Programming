@@ -13,7 +13,6 @@ class Solution:
             
             else:
                 left = mid + 1
-        if left == right:
-            return len(citations) - left
-        else:
-            return len(citations) - left
+        
+        
+        return len(citations) - left
