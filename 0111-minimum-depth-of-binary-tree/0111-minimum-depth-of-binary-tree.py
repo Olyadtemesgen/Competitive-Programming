@@ -15,7 +15,6 @@ class Solution:
         def minimum(root, result):
             
             nonlocal res
-            
             if not root:
                 return
             
