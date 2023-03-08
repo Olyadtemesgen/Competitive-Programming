@@ -9,14 +9,19 @@ class Solution:
         self.val = 0
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        def isValid(root, minimum_left, maximum_right):
+        stack = [(root, float("-inf"), float("inf"))]
+        
+        result = True
+        while stack:
             
+            root, left, right = stack.pop()
             if not root:
-                return True            
-           
-            if (root.val >= maximum_right or root.val <= minimum_left):
+                continue
+
+            if not (root.val > left and root.val < right):
                 return False
             
-            return isValid(root.right, root.val, maximum_right) and isValid(root.left, minimum_left, root.val)
+            stack.append((root.left, left, root.val))
+            stack.append((root.right, root.val, right))
         
-        return isValid(root, -2**31 - 2, 2**31 + 3)
+        return result
