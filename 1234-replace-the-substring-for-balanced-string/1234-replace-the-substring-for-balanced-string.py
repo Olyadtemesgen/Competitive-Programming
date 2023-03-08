@@ -7,11 +7,13 @@ class Solution:
         left = 0
         right = 0
         ccs  = False
+        
         for cc in count:
             if count[cc] != length:
                 ccs= True
         
         result = len(s)
+        
         if ccs:
             for right in range(len(s)):
                 
