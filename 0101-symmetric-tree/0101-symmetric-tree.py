@@ -7,13 +7,23 @@
 class Solution:
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         
-        def symet(p, q):
-            if not p and not q:
-                return True
-
-            if (not p and q) or (p and not q) or (p.val != q.val):
-                return False
-
-            return symet(p.left, q.right) and symet(p.right, q.left)
+        r_left = root.left
+        r_right = root.right
         
-        return symet(root.left, root.right)
+        stack = [(root.left, root.right)]
+        
+        result = True
+        
+        while stack:
+            left, right = stack.pop()
+            
+            if not right and not left:
+                continue
+            
+            if (not right and left) or (right and not left) or (right.val != left.val):
+                return False
+            
+            stack.append((left.left, right.right))
+            stack.append((left.right, right.left))
+        
+        return result
