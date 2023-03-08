@@ -19,4 +19,4 @@ class Solution:
             
             return isValid(root.right, root.val, maximum_right) and isValid(root.left, minimum_left, root.val)
         
-        return isValid(root, float("-inf"), float("inf"))
+        return isValid(root, -2**31 - 2, 2**31 + 3)
