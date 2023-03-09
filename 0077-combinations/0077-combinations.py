@@ -5,32 +5,31 @@ class Solution:
         
         array = [x for x in range(1, n + 1)]
         
-        def conbinator(index, arrays, arr):
+        def conbinator(index, array, arr):
             
             nonlocal result
             
             if len(arr) == k:
                 result.append(arr)
                 arr = []
+                return
             
             if index == n:
                 arr = []
                 return
             
-            arr2 = arr.copy()
-            arr2.append(array[index])
             
-            conbinator(index + 1, arrays[index + 1:], arr2)
-            conbinator(index + 1, arrays[index + 1:], arr)
+            arr.append(array[index])
+            arr2 = arr.copy()
+            conbinator(index + 1, array, arr2)
+            
+            arr.pop()
+            
+            conbinator(index + 1, array, arr)
         
         conbinator(0, array, [])
         
         result.sort()
         
-        res = [result[0]]
+        return result
         
-        for x in result[1:]:
-            if res[-1] != x:
-                res.append(x)
-                
-        return res
