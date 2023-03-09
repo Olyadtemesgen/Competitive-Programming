@@ -5,9 +5,9 @@ class Solution:
         
         array = [x for x in range(1, n + 1)]
         
-        def conbinator(index, array, arr):
+        def conbinator(index, arr):
             
-            nonlocal result
+           
             
             if len(arr) == k:
                 result.append(arr)
@@ -21,13 +21,13 @@ class Solution:
             
             arr.append(array[index])
             arr2 = arr.copy()
-            conbinator(index + 1, array, arr2)
+            conbinator(index + 1, arr2)
             
             arr.pop()
             
-            conbinator(index + 1, array, arr)
+            conbinator(index + 1, arr)
         
-        conbinator(0, array, [])
+        conbinator(0, [])
         
         result.sort()
         
