@@ -8,11 +8,10 @@ class Solution:
         if len(digits)== 1:
             return dictionary[digits[0]]
         
-        current = self.letterCombinations(digits[:len(digits) - 1])
-        
         result = []
         
-        for cur in current:
+        for cur in self.letterCombinations(digits[:len(digits) - 1]):
+            
             for after in dictionary[digits[-1]]:
                 result.append(cur + after)
         
