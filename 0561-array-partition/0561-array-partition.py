@@ -7,3 +7,4 @@ class Solution:
             sum += nums[x]
         
         return sum
+    #Jesus Is Lord
