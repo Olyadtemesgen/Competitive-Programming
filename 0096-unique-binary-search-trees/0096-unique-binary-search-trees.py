@@ -2,7 +2,7 @@ class Solution:
     
     def numTrees(self, n: int) -> int:
         
-        dp = [1 for x in range(n + 1)]
+        dp = [1, 1]
         
         for node in range(2, n + 1):
             
@@ -15,6 +15,6 @@ class Solution:
                 
                 sub_answer += (dp[left] * dp[right])
             
-            dp[node] = sub_answer
+            dp.append(sub_answer)
         
         return dp[n]
