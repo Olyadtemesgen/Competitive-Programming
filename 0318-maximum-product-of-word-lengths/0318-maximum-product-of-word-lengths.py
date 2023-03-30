@@ -6,7 +6,9 @@ class Solution:
         saved = []
         
         for x in range(len(words)):
+            
             saved.append(len(words[x]))
+            
             words[x] = set(words[x])
             
         for index1 in range(len(words)):
