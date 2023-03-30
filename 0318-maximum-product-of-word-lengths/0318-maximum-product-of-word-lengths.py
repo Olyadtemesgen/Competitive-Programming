@@ -1,22 +1,23 @@
 class Solution:
-    
     def maxProduct(self, words: List[str]) -> int:
+        
+        #by using bitmask
+        
+        array = []
         answer = 0
         
-        saved = []
-        
-        for x in range(len(words)):
+        for inx in range(len(words)):
             
-            saved.append(len(words[x]))
+            innumber = 0
             
-            words[x] = set(words[x])
+            for word in words[inx]:
+                innumber |= 1 << (ord(word) - ord('a'))
             
-        for index1 in range(len(words)):
-            
-            for index2 in range(index1 + 1, len(words)):
+            for index in range(inx):
                 
-                if len(words[index1].union(words[index2])) == len(words[index1]) + len(words[index2]):
-                    
-                    answer = max(answer, saved[index1] * saved[index2])
+                if not (array[index] & innumber):
+                    answer = max(answer, len(words[index]) * len(words[inx]))
             
+            array.append(innumber)
+        
         return answer
