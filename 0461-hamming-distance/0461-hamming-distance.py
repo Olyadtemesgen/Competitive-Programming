@@ -5,23 +5,20 @@ class Solution:
         
         while x and y:
             
-            if x % 2 + y % 2 == 1:
-                answer += 1
+            
+            answer += x % 2 ^ y % 2
             
             x //= 2
             y //= 2
         
         while x:
             
-            if x % 2:
-                answer += 1
             
+            answer += x % 2
             x //= 2
         
-        while y:
-            if y % 2:
-                answer += 1
-            
+        while y:  
+            answer += y % 2
             y //= 2
         
         return answer
