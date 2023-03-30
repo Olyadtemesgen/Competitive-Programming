@@ -7,6 +7,7 @@ class Solution:
         def fn(array, res):
             
             nonlocal answer
+            
             nonlocal length
             
             if len(res) == length:
@@ -18,6 +19,7 @@ class Solution:
                 return
 
             for x in range(len(array)):
+                
                 fn(array[:x] + array[x + 1:], res + [array[x]])
         
         fn(nums, [])
