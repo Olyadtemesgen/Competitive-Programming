@@ -1,11 +1,14 @@
 class Solution:
     def findComplement(self, num: int) -> int:
         
-        ans = ""
+        answer = 0
+
+        index = 0
         
         while num:
             
-            ans = str(int(not num % 2)) + ans
+            answer += (1 - num % 2) * 2 ** index
             num //= 2
-
-        return int("0b" + ans, 2)
+            index += 1
+            
+        return answer
