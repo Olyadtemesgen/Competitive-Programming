@@ -14,7 +14,7 @@ class Solution:
             
             nonlocal saved
             
-            if source == destination:
+            if source == destination or saved:
                 saved = True
                 return
             
