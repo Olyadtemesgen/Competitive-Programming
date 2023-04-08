@@ -13,4 +13,3 @@ class Solution:
                 answer.append(x)
         
         return answer
-            
