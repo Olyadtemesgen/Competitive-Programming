@@ -1,16 +1,21 @@
 class Solution:
-    def PredictTheWinner(self, nums) -> bool:
+    def PredictTheWinner(self, nums: List[int]) -> bool:
         
-        left, right = 0, len(nums) - 1
-        
-        def fn(left, right, turn, score_brook, score_oliad):
+        def find_the_winner(left, right):
+            
             if left > right:
-                return score_brook >= score_oliad
+                return 0
             
-            if turn:
-                return fn(left + 1, right, 1 - turn, score_brook + nums[left], score_oliad) or fn(left, right - 1, 1 - turn, score_brook + nums[right], score_oliad)
+            elif left == right:
+                return nums[left]
             
-            return fn(left + 1, right, 1 - turn, score_brook, score_oliad + nums[left]) and fn(left, right - 1, 1 - turn, score_brook, score_oliad + nums[right])
+            choice1 = nums[left] + min(find_the_winner(left + 2, right), find_the_winner(left + 1, right - 1))
+            
+            choice2 = nums[right] + min(find_the_winner(left + 1, right - 1), find_the_winner(left, right - 2))
+            
+            return max(choice1, choice2)
         
-        return fn(left, right, 1, 0, 0)
-            
+        value = find_the_winner(0, len(nums) - 1)
+        total = sum(nums)
+        
+        return value >= total / 2
