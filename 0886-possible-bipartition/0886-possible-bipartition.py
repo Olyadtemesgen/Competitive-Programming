@@ -1,6 +1,4 @@
-class Solution:
-    def __init__(self):
-        self.visited = set()  
+class Solution: 
         
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
         
