@@ -34,12 +34,15 @@ class Solution:
         
         for row in range(len(board)):
             for col in range(len(board[0])):
+                
                 value = row * len(board[0]) + col
                 flag = True
                 vv = set()
+                
                 if board[row][col] == "O" and value not in res:
-                    print(res)
+                    # print(res)
                     dfs(row, col, set())
+                    
                     if flag:
                         res2 = res2.union(vv)
         
