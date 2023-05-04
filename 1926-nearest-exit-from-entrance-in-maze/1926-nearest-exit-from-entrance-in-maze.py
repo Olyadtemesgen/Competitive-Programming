@@ -112,7 +112,7 @@ class Solution:
                 # print(queue)
                 row, col = queue.popleft()
                 
-                # print(row, col)
+            
                 
                 if not row or not col or row >= m  - 1 or col >= n - 1:
                     return length
