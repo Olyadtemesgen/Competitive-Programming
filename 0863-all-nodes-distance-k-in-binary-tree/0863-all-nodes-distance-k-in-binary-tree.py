@@ -49,8 +49,7 @@ class Solution:
                             
                             visited.add(vals)
                             queue.append(vals)
-                
-                # print(queue)
+
                 k -= 1
             
         bfs(target.val, set(), k)
