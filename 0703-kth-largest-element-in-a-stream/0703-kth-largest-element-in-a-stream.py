@@ -7,8 +7,11 @@ class KthLargest:
         heapq.heapify(self.heap)
         
         while len(self.heap) > k:
+            # heapq.heappush(self.heap, num)
             
+    
             heapq.heappop(self.heap)
+
     
     def add(self, val: int) -> int:
         
