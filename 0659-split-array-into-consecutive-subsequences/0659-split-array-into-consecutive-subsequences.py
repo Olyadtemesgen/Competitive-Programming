@@ -2,11 +2,7 @@ class Solution:
     
     def isPossible(self, nums: List[int]) -> bool:
             
-        freq = defaultdict(int)
-
-        for num in nums:
-            freq[num] += 1
-       
+        freq = Counter(nums)
         ends = defaultdict(int)
 
         for num in nums:
