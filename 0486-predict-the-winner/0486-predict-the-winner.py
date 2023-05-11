@@ -12,12 +12,13 @@ class Solution:
                 for i in range(2):
                     if i == 0:
                         v = max(v, minimax(left+1, right, score1+nums[left], score2, False, alpha, beta))
+                    
                     else:
                         v = max(v, minimax(left, right-1, score1+nums[right], score2, False, alpha, beta))
+                    
+                    if v >= beta:
+                        return v
                     alpha = max(alpha, v)
-
-                    if alpha >= beta:
-                        break
 
                 return v
             else:
@@ -28,9 +29,12 @@ class Solution:
                         v = min(v, minimax(left+1, right, score1, score2+nums[left], True, alpha, beta))
                     else:
                         v = min(v, minimax(left, right-1, score1, score2+nums[right], True, alpha, beta))
+                    
+                    if v <= alpha:
+                        return v
+
                     beta = min(beta, v)
-                    if alpha >= beta:
-                        break
+                    
                 
                 return v
 
