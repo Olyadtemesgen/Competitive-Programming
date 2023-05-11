@@ -1,5 +1,6 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        
         graph = defaultdict(list)
         graph2 = defaultdict(int)
         
