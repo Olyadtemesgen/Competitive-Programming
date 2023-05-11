@@ -1,21 +1,24 @@
 class Solution:
     def PredictTheWinner(self, nums: List[int]) -> bool:
         
-        def find_the_winner(left, right):
-            
-            if left > right:
-                return 0
-            
-            elif left == right:
-                return nums[left]
-            
-            choice1 = nums[left] + min(find_the_winner(left + 2, right), find_the_winner(left + 1, right - 1))
-            
-            choice2 = nums[right] + min(find_the_winner(left + 1, right - 1), find_the_winner(left, right - 2))
-            
-            return max(choice1, choice2)
+        def fn(left: int, right: int, score1: int, score2: int, is_player1: bool) -> int:
+            if left == right:
+                return score1 + nums[left] if is_player1 else score2 + nums[left]
+
+            if is_player1:
+                return max(fn(left+1, right, score1+nums[left], score2, False), 
+                            fn(left, right-1, score1+nums[right], score2, False))
+
+            else:
+                return min(fn(left+1, right, score1, score2+nums[left], True), 
+                            fn(left, right-1, score1, score2+nums[right], True))
+
         
-        value = find_the_winner(0, len(nums) - 1)
-        total = sum(nums)
-        
-        return value >= total / 2
+        total_score = sum(nums)
+
+                # memo = {}
+
+        player1_score = fn(0, len(nums)-1, 0, 0, True)
+        print(player1_score)
+        return  player1_score >= (sum(nums) - player1_score)
+    
