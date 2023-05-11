@@ -9,7 +9,7 @@ class Solution:
             graph2[pre[0]] += 1
             
         
-        queue = deque([])
+        queue = []
         
         for xx in range(numCourses):
             if not graph2[xx]:
@@ -17,24 +17,40 @@ class Solution:
         
         answer = []
         
-        while queue:
-            
-            value = queue.popleft()
-            
-            answer.append(value)
-            
-            for x in graph[value]:
-                
-                graph2[x] -= 1
-                
-                if graph2[x] == 0:
-                    queue.append(x)
+        colors = [0] * numCourses
         
-        if len(answer) == numCourses:
+        for coot in queue:
+            has_cycle = self.hascycle(coot, colors, graph, answer)
+            
+            if has_cycle:
+                return []
+        
+        answer.reverse()
+        
+        if len(answer) != numCourses:
+            return []
+
+        return answer
+
+        
+    def hascycle(self, root, colors, graph, answer):
+        if colors[root] == 2:
+            return False
+
+        if colors[root] == 1:
             return True
-        
+
+        colors[root] = 1
+
+        for nei in graph[root]:
+            iscycles = self.hascycle(nei, colors, graph, answer)
+
+            if iscycles:
+                return True
+
+        colors[root] = 2
+
+        answer.append(root)
         return False
-            
-            
-                
-                
+
+    
