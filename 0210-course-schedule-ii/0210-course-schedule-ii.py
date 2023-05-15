@@ -10,32 +10,45 @@ class Solution:
             graph2[pre[0]] += 1
             
         
-        queue = deque([])
+        stack = []
         
         for xx in range(numCourses):
             if not graph2[xx]:
-                queue.append(xx)
+                stack.append(xx)
         
         answer = []
         
-        while queue:
-            
-            value = queue.popleft()
-            
-            answer.append(value)
-            
-            for x in graph[value]:
-                
-                graph2[x] -= 1
-                
-                if graph2[x] == 0:
-                    queue.append(x)
+        colors = [0] * numCourses
         
-        if len(answer) == numCourses:
-            return answer
+        top_to_ans = []
         
-        return []
+        for vals in range(numCourses):
+            has_cycle = self.has_cycle(vals, colors, graph, top_to_ans)
             
+            if has_cycle:
+                return []
+        
+        top_to_ans.reverse()
+        
+        return top_to_ans
+    
+    def has_cycle(self, current, colors, graph, top_to_ans):
+        if colors[current] == 1:
+            return True
+        
+        elif colors[current] == 2:
+            return False
+        
+        colors[current] = 1
+        
+        for neighbours in graph[current]:
+
+            value = self.has_cycle(neighbours, colors, graph, top_to_ans)
+        
+            if value:
+                return True
             
-                
-                
+        top_to_ans.append(current)
+        colors[current] = 2
+        
+        return False
