@@ -1,37 +1,53 @@
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
         
-        graph = defaultdict(list)
+        DS = DisjointSet(1+n)
         
-        cost = defaultdict(lambda:float('inf'))
-        for road in roads:
-            
-            graph[road[0]].append(road[1])
-            graph[road[1]].append(road[0])
-            cost[(road[0], road[1])] = road[2]
-            cost[(road[1], road[0])] = road[2]
-            
+        for fr, to, cost in roads:
+            DS.union(fr, to )
         
-        minimum = float('inf')
+        minimum = inf
         
-        queue = deque()
-        queue.append((1, -1))
+        for fr, to, cost in roads:
+            
+            if DS.isConnected(fr ,1):
+                minimum = min(minimum, cost)
         
-        visited = set()
-        while queue:
-            
-            
-            cur, par = queue.popleft()
-            
-            visited.add(cur)
-            
-            minimum = min(minimum, cost[(cur, par)])
-            
-            for x in graph[cur]:
-                
-                if x not in visited:
-                    
-                    queue.append((x, cur))
-            
         return minimum
+    
+class DisjointSet:
+    
+    def __init__(self, n):
         
+        self.parents = [i for i in range(n)]
+        self.rank = [1 for _ in range(n)]
+    
+    def representative(self, node):
+        
+        if self.parents[node] == node:
+            return node
+        
+        self.parents[node] = self.representative(self.parents[node])
+        
+        return self.parents[node]
+    
+    def union(self, node1, node2):
+        
+        parent1 = self.representative(node1)
+        parent2 = self.representative(node2)
+        
+        if parent1 != parent2:
+            
+            if self.rank[parent1] > self.rank[parent2]:
+                self.parents[parent2] = parent1
+            
+            elif self.rank[parent1] < self.rank[parent2]:
+                self.parents[parent1] = parent2
+            
+            else:
+                self.parents[parent1] = parent2
+                self.rank[parent2] += 1
+        
+    
+    def isConnected(self, node1, node2):
+        return self.representative(node1) == self.representative(node2)
