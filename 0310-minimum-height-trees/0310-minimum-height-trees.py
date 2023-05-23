@@ -34,7 +34,6 @@ class Solution:
                 
                 for node in graph[tdv]:
                     
-                    
                     counter[node] -= 1
                     
                     if node not in visited and counter[node] == 1:
