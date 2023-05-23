@@ -27,8 +27,10 @@ class Solution:
 
         while todo:
             
-            ans = set(todo.copy())
-
+            if len(todo) <= 2:
+                
+                ans = todo.copy()
+                
             for td in range(len(todo)):
                 
                 tdv = todo.popleft()
