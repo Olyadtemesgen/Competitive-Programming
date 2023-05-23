@@ -4,12 +4,12 @@ class Solution:
         graph = defaultdict(list)
         
         counter = [0] * n
-        
+        nne = n
         for fr, to in edges:
             
             graph[fr].append(to)
             graph[to].append(fr)
-            
+   
             counter[fr] += 1
             counter[to] += 1
             
@@ -25,23 +25,20 @@ class Solution:
         visited = set(todo)
         ans = []
 
-        while todo:
+        while todo and nne > 2:
             
-            if len(todo) <= 2:
-                
-                ans = todo.copy()
-                
             for td in range(len(todo)):
                 
                 tdv = todo.popleft()
+                nne -= 1
                 
                 for node in graph[tdv]:
+                    
                     
                     counter[node] -= 1
                     
                     if node not in visited and counter[node] == 1:
-
                         visited.add(node)
                         todo.append(node)
-                
-        return ans if ans else [0]
+            
+        return todo if todo else [0]
