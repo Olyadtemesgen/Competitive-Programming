@@ -11,6 +11,7 @@ class Solution:
         for x in range(1, len(nums)):
             
             if mi != -inf:
+                
                 if nums[x] > md:
                     return True
                 
@@ -23,6 +24,7 @@ class Solution:
                         mi = nums[x]
             
             elif nums[x] > nums[x - 1]:
+                
                 mi = nums[x - 1]
                 md = nums[x]
         
