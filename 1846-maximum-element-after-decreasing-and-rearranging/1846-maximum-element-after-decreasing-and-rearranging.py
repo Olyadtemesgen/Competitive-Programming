@@ -11,4 +11,11 @@ class Solution:
                 
                 arr[index] = arr[index - 1] + 1
         
-        return len(Counter(arr))
+        answer = 1
+        
+        for x in range(1, len(arr)):
+            
+            if arr[x] != arr[x - 1]:
+                answer += 1
+        
+        return answer
