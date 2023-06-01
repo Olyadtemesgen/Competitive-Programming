@@ -1,14 +1,17 @@
 class Solution:
     
     def __init__(self):
-        self.memoization = {}
+        self.memo = {}
     
     def fib(self, n: int) -> int:
-        
-        if n in self.memoization:
-            return self.memoization
         
         if n <= 1:
             return n
         
-        return self.fib(n - 1) + self.fib(n - 2)
+        if n in self.memo:
+            return self.memo[n]
+        
+        self.memo[n] = self.fib(n - 1) + self.fib(n - 2)
+        
+        return self.memo[n]
+    
