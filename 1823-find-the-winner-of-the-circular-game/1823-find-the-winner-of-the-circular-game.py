@@ -19,4 +19,5 @@ class Solution:
             
             listt.pop(index)
     
+    
         return listt[0]
