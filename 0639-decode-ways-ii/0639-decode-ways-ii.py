@@ -17,7 +17,7 @@ class Solution:
         
         else:
             before, now = 1, 1
-        xx = 1
+
         for index in range(1, len(s)):
             
             number = 0
@@ -63,9 +63,7 @@ class Solution:
                                 number += before   
 
                             else:
-                                break 
-
-            xx = before
+                                break
             before = now
             now = number
         
