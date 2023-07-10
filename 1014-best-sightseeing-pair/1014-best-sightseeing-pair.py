@@ -11,6 +11,7 @@ class Solution:
         answer = 0
         
         for index in range(len(values) - 1):
+            
             answer = max(answer, values[index] + index + max_right_dec[index + 1])
         
         return answer
