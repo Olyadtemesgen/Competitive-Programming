@@ -3,9 +3,11 @@ class Solution:
         
         max_right_dec = [0] * len(values)
         
+        
         max_right_dec[-1] = values[-1] - len(values) + 1
         
         for index in range(len(values) - 2, -1, -1):
+            
             max_right_dec[index] = max(max_right_dec[index + 1], values[index] - index)
         
         answer = 0
