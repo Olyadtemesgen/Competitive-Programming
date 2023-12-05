@@ -16,10 +16,8 @@ class Solution:
             flag = True
             for char in string:
                 if char not in dicts[saved]:
-                    flag = False
-            
+                    flag = False 
             if flag:
                 result.append(string)
             
-              
         return result
