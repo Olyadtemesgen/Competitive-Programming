@@ -1,42 +1,35 @@
 class ATM:
 
     def __init__(self):
-        self.numbers = defaultdict(int)
-        self.keys = {1: 20, 2: 50, 3: 100, 4: 200, 5: 500}
+        self.value_ind = {20:0, 50:1, 100:2, 200:3, 500:4}
+        self.values = [20, 50, 100, 200, 500]
+        
+        self.value_count = {_:0 for _ in self.values}
 
     def deposit(self, banknotesCount: List[int]) -> None:
-        for i in range(5):
-            self.numbers[i + 1] += banknotesCount[i]        
+        for c, val in zip(banknotesCount, self.values):
+            self.value_count[val] += c
 
     def withdraw(self, amount: int) -> List[int]:
-        keyss = defaultdict(int)
-        temp_key = self.numbers.copy()
+        value_count = self.value_count.copy()
+        withdraw_count = {_:0 for _ in self.values}
+        while True:
+            # get all bills with values <= amount
+            values = [v for v, c in value_count.items() if c > 0 and v <= amount]
+            if not values:
+                if amount == 0:
+                    self.value_count = value_count.copy()
+                    return [withdraw_count[v] for v in self.values]
+                return [-1]
+            value_max = max(values)
+            while value_count[value_max] > 0 and amount >= value_max:
+                cnt = min(value_count[value_max], amount // value_max)
+                value_count[value_max] -= cnt
+                withdraw_count[value_max] += cnt
+                amount -= value_max * cnt
 
-        for money in range(5, 0, -1):
-            
-            if self.numbers[money]:
+        
 
-                multipliers = amount // self.keys[money]
-                if multipliers:
-                    minimum = min(self.numbers[money], multipliers)
-                    amount -= minimum * self.keys[money]
-                    self.numbers[money] -= minimum
-                    keyss[money] = minimum
-            
-            if not amount:
-                break
-        
-        if amount:
-            self.numbers = temp_key
-            return [-1]
-            
-        
-        answer = [0] * 5
-
-        for ky in keyss:
-            answer[ky - 1] = keyss[ky]
-        
-        return answer
 
 # Your ATM object will be instantiated and called as such:
 # obj = ATM()
