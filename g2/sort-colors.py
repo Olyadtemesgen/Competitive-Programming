@@ -3,6 +3,7 @@ class Solution:
         n0 = []
         n1 = []
         n2 = []
+        
         for x in nums:
             if x == 0: 
                 n0.append(x)
