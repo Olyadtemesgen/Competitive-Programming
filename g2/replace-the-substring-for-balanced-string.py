@@ -29,9 +29,12 @@ class Solution:
                     count[s[left]] += 1
                     left += 1
                 
-                if not ccs:
-                    result = min(result, right - left + 1)
                 
+                if not ccs:
+                    
+                    result  = min(result, right - left + 1, 10 ** 8)
+                
+            
             return result
         
         else:
