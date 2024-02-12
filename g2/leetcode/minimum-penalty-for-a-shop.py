@@ -1,7 +1,7 @@
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
         
-
+        # submission
         y_n = []
 
         y = 0
