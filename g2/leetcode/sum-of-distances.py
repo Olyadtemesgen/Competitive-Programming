@@ -4,13 +4,14 @@ class Solution:
         indexes = defaultdict(list)
 
         prefix = defaultdict(list)
+        
         for i in range(len(nums)):
             indexes[nums[i]].append(i)
             prefix[nums[i]].append(0)
         
         answer = [0] * len(nums)
-
         for key in indexes:
+            
             leng = len(indexes[key])
             if leng > 1:
                 
