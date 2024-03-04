@@ -1,2 +1,2 @@
 # Competitive-Programming
-The problems I Saved from leetcode, Hackerank and Codeforces
+The solutions to problems I have solved from leetcode, Hackerank and Codeforces
